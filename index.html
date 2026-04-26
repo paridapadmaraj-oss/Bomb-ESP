@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My App OTP - Get Your Number</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            padding: 20px;
+        }
+        .container {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 3rem 2rem;
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+        }
+        h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .app-number {
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 4rem;
+            font-weight: bold;
+            margin: 2rem 0;
+            letter-spacing: 8px;
+            text-shadow: 0 0 30px rgba(255,215,0,0.5);
+        }
+        .instruction {
+            background: rgba(255,255,255,0.2);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            line-height: 1.6;
+        }
+        .btn {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            font-weight: 600;
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(255,107,107,0.4);
+        }
+        .status {
+            padding: 1rem;
+            border-radius: 12px;
+            margin: 1rem 0;
+            font-weight: 500;
+        }
+        .success { background: rgba(46,204,113,0.3); }
+        .info { background: rgba(52,152,219,0.3); }
+        @media (max-width: 500px) {
+            .app-number { font-size: 3rem; letter-spacing: 4px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📱 My App OTP</h1>
+        <div class="app-number" id="appNumber">000000</div>
+        
+        <div class="instruction">
+            <strong>✅ Copy this number:</strong><br>
+            <span id="copyNumber" style="font-size:1.2rem; font-weight:bold;"></span><br><br>
+            <strong>📲 Steps:</strong><br>
+            1. Open YOUR app<br>
+            2. Enter this number<br>
+            3. Get OTP from app<br>
+            4. Enter OTP below 👇
+        </div>
+
+        <div class="status info" id="status">
+            Click "New Number" to generate your app number
+        </div>
+
+        <input type="text" id="otpInput" placeholder="Enter OTP from your app" 
+               style="width:100%; padding:1.2rem; font-size:1.5rem; border-radius:15px; border:2px solid rgba(255,255,255,0.3); margin:1rem 0; text-align:center; background:rgba(255,255,255,0.2); color:white; font-weight:bold;">
+        
+        <button class="btn" onclick="generateNewNumber()">🔄 New Number</button>
+        <button class="btn" onclick="verifyOTP()" style="background:linear-gradient(45deg, #2ecc71, #27ae60);">✅ Verify OTP</button>
+    </div>
+
+    <script>
+        let currentAppNumber = '';
+        let expectedOTP = '';
+
+        function generateAppNumber() {
+            currentAppNumber = Math.floor(100000 + Math.random() * 900000).toString();
+            document.getElementById('appNumber').textContent = currentAppNumber;
+            document.getElementById('copyNumber').textContent = currentAppNumber;
+            
+            // Generate expected OTP (what your app will send)
+            expectedOTP = Math.floor(100000 + Math.random() * 900000).toString();
+            
+            document.getElementById('status').innerHTML = `
+                <strong>✅ Ready!</strong><br>
+                Enter <strong>${currentAppNumber}</strong> in your app to receive OTP
+            `;
+            document.getElementById('status').className = 'status success';
+        }
+
+        function generateNewNumber() {
+            generateAppNumber();
+        }
+
+        function verifyOTP() {
+            const userOTP = document.getElementById('otpInput').value.trim();
+            
+            if (userOTP === expectedOTP) {
+                document.getElementById('status').innerHTML = `
+                    <strong>🎉 SUCCESS!</strong><br>
+                    Your app sent the correct OTP: ${expectedOTP}
+                `;
+                document.getElementById('status').className = 'status success';
+            } else {
+                document.getElementById('status').innerHTML = `
+                    ❌ Wrong OTP!<br>
+                    Expected: ${expectedOTP}<br>
+                    Try again or generate new number
+                `;
+                document.getElementById('status').className = 'status info';
+            }
+        }
+
+        // Auto-generate first number
+        window.onload = generateAppNumber;
+
+        // Copy on click
+        document.getElementById('appNumber').onclick = function() {
+            navigator.clipboard.writeText(currentAppNumber);
+            document.getElementById('status').innerHTML = '📋 Number copied!';
+        };
+
+        // Enter key verify
+        document.getElementById('otpInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') verifyOTP();
+        });
+    </script>
+</body>
+</html>
